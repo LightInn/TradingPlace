@@ -1,7 +1,9 @@
-import {useSession, signIn, signOut} from "next-auth/react"
+import {signIn, signOut} from "next-auth/react"
+import {getServerSession} from "next-auth";
 
 export default function RegisterBtn() {
-    const {data: session} = useSession()
+    // @ts-ignore
+    const {data: session} = getServerSession()
     if (session) {
         // @ts-ignore
         return (<> Signed in as {session.user.email} <br/>
