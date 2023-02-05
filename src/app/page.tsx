@@ -3,6 +3,7 @@ import RegisterBtn from "@/app/register-btn";
 
 
 export default function HomePage() {
+
     return (
         <>
 
@@ -25,6 +26,8 @@ export default function HomePage() {
                                     <LoginBtn/>
 
                                     <RegisterBtn/>
+
+
                                 </div>
                             </div>
 

@@ -1,82 +1,61 @@
-'use client';
+import {cookies} from "next/headers";
+import {pocketbase} from "@/lib/pocketbase";
 
-import {useRouter} from "next/navigation";
-import {useEffect, useState} from "react";
-import PocketBase from 'pocketbase';
-
-const pb = new PocketBase('https://pockettest.lightin.io');
+export const revalidate = 0;
 
 
-async function getUser(id: string) {
-    return await pb.collection('users').getOne(id);
+import LogoutBtn from "@/app/auth/profile/logout-btn";
+import ProfileView from "@/app/auth/profile/profile-view";
+import {Suspense} from "react";
+
+
+
+
+
+const getUser = async (id: string) => {
+
+    const nextCookies = cookies();
+
+    const authCookie = nextCookies.get("pb_auth");
+
+    console.log("auth cookie : " + authCookie)
+
+
+    if (!authCookie) return null;
+
+    console.log("pass null")
+
+    console.log(pocketbase.authStore.model)
+
+
+    await pocketbase.authStore.loadFromCookie(`${authCookie.name}=${authCookie.value}`);
+
+    console.log(pocketbase.authStore.model)
+
+    return await pocketbase.collection('users').getOne(id).catch(
+        (error) => {
+            console.log(error);
+        }
+    );
+    // todo : add error handling
 }
 
 
 export default async function Page() {
 
-
-    const router = useRouter()
-    const [profile, setProfile] = useState({
-        username: undefined
-    })
+    const r = await getUser(pocketbase.authStore.model?.id as string)
 
 
-    const logout = async (e: { preventDefault: () => void; }) => {
-        e.preventDefault()
-        // "logout" the last authenticated account
-        pb.authStore.clear();
-    }
+    return (
+        <div className="flex flex-col  items-center justify-center h-screen">
+
+            <Suspense>
+                <ProfileView data={r}/>
+            </Suspense>
 
 
-    useEffect(() => {
+            <LogoutBtn/>
+        </div>
+    )
 
-
-        async () => {
-
-
-            // @ts-ignore
-            let user = await getUser(pb.authStore.model.id);
-            console.log(user);
-
-
-            // @ts-ignore
-            if (profile !== user) {
-
-                // @ts-ignore
-                setProfile(user);
-            }
-
-
-        }
-
-
-    }, [profile])
-
-
-    if (profile === undefined) {
-
-        return (
-
-            <h1>
-                not connected
-            </h1>
-        )
-
-
-    } else {
-        return (
-            <div className="flex items-center justify-center h-screen">
-
-
-                <h1> {profile.username} </h1>
-
-
-                <button onClick={logout}
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full">
-                    Logout
-                </button>
-
-            </div>
-        )
-    }
 }
