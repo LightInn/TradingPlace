@@ -1,5 +1,5 @@
-import LoginBtn from '@/app/login-btn'
-import RegisterBtn from "@/app/register-btn";
+import LoginBtn from '@/components/login-btn'
+import RegisterBtn from "@/components/register-btn";
 
 
 export default function HomePage() {

@@ -5,6 +5,7 @@ import '@/styles/globals.css'
 import PocketBase from 'pocketbase';
 import {useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
+import Navbar from "@/components/Navbar";
 
 const pb = new PocketBase('https://pockettest.lightin.io');
 
@@ -32,6 +33,8 @@ export default function HomeLayout({
     if (!authentificated) {
         router.push("/");
     }
-    return <section>{children}</section>;
+    return <section>
+        <Navbar/>
+        {children}</section>;
 
 }
