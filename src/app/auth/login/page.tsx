@@ -33,7 +33,7 @@ export default function Page() {
 					)
 					console.log(document.cookie)
 
-					router.push('/home')
+					router.push('/app')
 				})
 
 			// after the above you can also access the auth data from the authStore

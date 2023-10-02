@@ -4,7 +4,10 @@ import type { NextRequest } from 'next/server'
 import { getUserFromCookie } from '@/lib/getUserFromCookie'
 
 export async function middleware(request: NextRequest) {
-	const user = await getUserFromCookie()
+
+	let cookie = request.cookies.get('pb_auth')
+
+	const user = await getUserFromCookie(cookie)
 
 	console.log(user)
 

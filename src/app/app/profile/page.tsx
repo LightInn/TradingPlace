@@ -3,8 +3,8 @@ import { pocketbase } from '@/lib/pocketbase'
 
 export const revalidate = 0
 
-import LogoutBtn from '@/app/auth/profile/logout-btn'
-import ProfileView from '@/app/auth/profile/profile-view'
+import LogoutBtn from '@/app/app/profile/logout-btn'
+import ProfileView from '@/app/app/profile/profile-view'
 import { Suspense } from 'react'
 
 const getUser = async (id: string) => {
@@ -39,7 +39,7 @@ export default async function Page() {
 	const r = await getUser(pocketbase.authStore.model?.id as string)
 
 	return (
-		<div className="flex h-screen  flex-col items-center justify-center">
+		<div className="flex h-[800px]  flex-col items-center justify-center">
 			<Suspense>
 				<ProfileView data={r} />
 			</Suspense>
