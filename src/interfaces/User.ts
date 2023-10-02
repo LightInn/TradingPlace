@@ -1,7 +1,3 @@
 export interface User {
-
-
-    token: string;
-
-
+	token: string
 }
