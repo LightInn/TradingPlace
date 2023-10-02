@@ -2,7 +2,7 @@ import PocketBase from "pocketbase";
 
 // import { env } from "@/lib/env";
 
-const pocketbase = new PocketBase('https://pockettest.lightin.io');
+const pocketbase = new PocketBase('https://tradingplace-api.lightin.io');
 
 
 if (typeof document !== "undefined") {

@@ -3,7 +3,7 @@ import {useRouter} from "next/navigation";
 import {useState} from "react";
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase('https://pockettest.lightin.io');
+const pb = new PocketBase('https://tradingplace-api.lightin.io');
 
 export default function Page() {
 

@@ -4,7 +4,7 @@ import {useRouter} from "next/navigation";
 import {useState} from "react";
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase('https://pockettest.lightin.io');
+const pb = new PocketBase('https://tradingplace-api.lightin.io');
 
 export default function Register() {
 
@@ -14,8 +14,8 @@ export default function Register() {
 
     const [email, setEmail] = useState("breval.lefloch@gmail.com")
     const [name, setName] = useState("breval")
-    const [password, setPassword] = useState("123456")
-    const [passwordConfirm, setPasswordConfirm] = useState("123456")
+    const [password, setPassword] = useState("12345678")
+    const [passwordConfirm, setPasswordConfirm] = useState("12345678")
 
 
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
