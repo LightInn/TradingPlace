@@ -1,6 +1,7 @@
 import type { User } from '@/interfaces/User'
 
-import { ReadonlyRequestCookies } from 'next/dist/server/app-render'
+
+import { cookies } from 'next/headers'
 
 import { pocketbase } from '@/lib/pocketbase'
 import { RequestCookies } from 'next/dist/server/web/spec-extension/cookies'
@@ -12,10 +13,9 @@ import { RequestCookies } from 'next/dist/server/web/spec-extension/cookies'
  * @author Arif "poltang" Muslax
  * @see {@link https://github.com/vvo/iron-session/issues/560#issuecomment-1324598048}
  */
-function getUserFromCookie(
-	cookies: RequestCookies | ReadonlyRequestCookies
-): User | null {
-	const authCookie = cookies.get('pb_auth')
+function getUserFromCookie(){
+	const cookieStore = cookies()
+	const authCookie = cookieStore.get('pb_auth')
 
 	if (!authCookie) return null
 

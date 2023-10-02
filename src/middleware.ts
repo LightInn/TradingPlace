@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server'
 import { getUserFromCookie } from '@/lib/getUserFromCookie'
 
 export async function middleware(request: NextRequest) {
-	const user = await getUserFromCookie(request.cookies)
+	const user = await getUserFromCookie()
 
 	console.log(user)
 
