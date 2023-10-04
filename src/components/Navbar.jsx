@@ -6,6 +6,7 @@ export default function Navbar() {
 			<Link href={'/app/'}>TradingPlace</Link>
 			<Link href={'/app/editor'}>editor</Link>
 			<Link href={'/app/trade'}>trade</Link>
+			<Link href={'/app/mine'}>mine</Link>
 			<Link href={'/app/profile'}>profile</Link>
 		</div>
 	)

@@ -1,5 +1,5 @@
 export default function CardPreview({
-	name,
+	title,
 	description,
 	rarity,
 	image,
@@ -15,7 +15,7 @@ export default function CardPreview({
 				alt="card-img"
 				className="mb-4 h-48 w-full rounded object-cover"
 			/>
-			<h1 className="mb-2 text-2xl">{name}</h1>
+			<h1 className="mb-2 text-2xl">{title}</h1>
 			<p className="mb-2 text-base">{description}</p>
 			<p className="text-sm text-gray-500">{rarity}</p>
 			{/* Et autres champs... */}

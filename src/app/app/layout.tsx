@@ -2,35 +2,31 @@
 'use client'
 import '@/styles/globals.css'
 
-import PocketBase from 'pocketbase'
-import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import {useRouter} from 'next/navigation'
+import {useEffect, useState} from 'react'
 import Navbar from '@/components/Navbar'
+import {pb} from '@/lib/pocketbase'
 
-const pb = new PocketBase('https://pockettest.lightin.io')
-
-export default function HomeLayout({
-	children,
-}: {
-	children: React.ReactNode
+export default function HomeLayout({children}: {
+    children: React.ReactNode
 }) {
-	const router = useRouter()
-	const [authentificated, setAuthentificated] = useState(true)
-	const auth = pb.authStore.isValid
+    const router = useRouter()
+    const [authentificated, setAuthentificated] = useState(true)
+    const auth = pb.authStore.isValid
 
-	useEffect(() => {
-		if (auth) {
-			setAuthentificated(true)
-		}
-	}, [auth])
+    useEffect(() => {
+        if (auth) {
+            setAuthentificated(true)
+        }
+    }, [auth])
 
-	if (!authentificated) {
-		router.push('/')
-	}
-	return (
-		<section>
-			<Navbar />
-			{children}
-		</section>
-	)
+    if (!authentificated) {
+        router.push('/')
+    }
+    return (
+        <section>
+            <Navbar/>
+            {children}
+        </section>
+    )
 }

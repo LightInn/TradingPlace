@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
 
 	const user = await getUserFromCookie(cookie)
 
-	console.log(user)
+	// console.log(user)
 
 	if (request.nextUrl.pathname == '/' && user) {
 		return NextResponse.redirect(new URL('/app', request.url))

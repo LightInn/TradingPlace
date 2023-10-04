@@ -1,17 +1,17 @@
 import PocketBase from 'pocketbase'
+import * as process from "process";
 
-// import { env } from "@/lib/env";
-
-const pocketbase = new PocketBase('https://tradingplace-api.lightin.io')
+const pb: PocketBase = new PocketBase("http://localhost:8090") //process.env.API_URL
+console.log(process.env.API_URL)
 
 if (typeof document !== 'undefined') {
-	pocketbase.authStore.loadFromCookie(document.cookie)
+    pb.authStore.loadFromCookie(document.cookie)
 
-	pocketbase.authStore.onChange(() => {
-		document.cookie = pocketbase.authStore.exportToCookie({ httpOnly: false })
-	})
+    pb.authStore.onChange(() => {
+        document.cookie = pb.authStore.exportToCookie({httpOnly: false})
+    })
 }
 
-pocketbase.autoCancellation(false)
+pb.autoCancellation(false)
 
-export { pocketbase }
+export {pb}
