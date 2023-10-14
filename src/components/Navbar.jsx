@@ -5,6 +5,7 @@ export default function Navbar() {
 		<div className="flex justify-between rounded bg-white p-4 shadow-lg">
 			<Link href={'/app/'}>TradingPlace</Link>
 			<Link href={'/app/editor'}>editor</Link>
+			<Link href={'/app/community'}>community</Link>
 			<Link href={'/app/trade'}>trade</Link>
 			<Link href={'/app/mine'}>mine</Link>
 			<Link href={'/app/profile'}>profile</Link>

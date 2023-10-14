@@ -1,15 +1,11 @@
-export default function PlayCard({ name, price, rarity, image }) {
+export default function PlayCard({ title, description, image }) {
 	return (
-		<div className="m-4 w-64 rounded bg-white p-4 shadow-lg">
-			<img
-				src={image}
-				alt="card-img"
-				className="mb-2 h-32 w-full rounded object-cover"
-			/>
-			<h1 className="mb-2 text-xl">{name}</h1>
-			<p className="mb-2 text-sm text-gray-500">{rarity}</p>
-			<p className="text-lg text-green-500">{price} pièces</p>
-			<button className="mt-2 w-full rounded bg-blue-500 p-2 text-white">
+		<div className="m-4 flex max-w-md justify-between rounded bg-white p-4 shadow-lg">
+			<h1 className="mb-2 text-xl">{title}</h1>
+			<h1 className="mb-2 text-xl">{description}</h1>
+			<p className="mb-2 text-sm text-gray-500">rarity</p>
+			<p className="text-lg text-green-500"> pièces</p>
+			<button className="mt-2 w-20 rounded bg-blue-500  text-white">
 				Acheter
 			</button>
 		</div>

@@ -6,7 +6,7 @@ export default function Page() {
 		<div className="flex h-screen flex-col items-center justify-center">
 			<div>Main page</div>
 			<div className="bg-blue-600">
-				<Link href={'/auth/profile'}>Profile</Link>
+				<Link href={'/app/auth/profile'}>Profile</Link>
 			</div>
 		</div>
 	)
