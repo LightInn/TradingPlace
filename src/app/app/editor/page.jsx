@@ -3,6 +3,7 @@ import CardPreview from '../../../components/CardPreview'
 import {pb} from '../../../lib/pocketbase'
 import {useState} from 'react'
 
+
 export default function EditorPage() {
     const [formData, setFormData] = useState(new FormData())
     const [image, setImage] = useState(null)
@@ -29,7 +30,7 @@ export default function EditorPage() {
             data.append('image', image)
             setFormData(data)
         }
-        const record = await pb.collection('propositioncards').create(formData)
+        await pb.collection('propositioncards').create(formData)
     }
 
     return (
@@ -211,7 +212,7 @@ export default function EditorPage() {
                     </button>
                 </form>
                 <div className="preview-container w-1/2">
-                    <CardPreview {...formData} />
+                    <CardPreview image={image} title={formData.title}/>
                 </div>
             </main>
         </div>

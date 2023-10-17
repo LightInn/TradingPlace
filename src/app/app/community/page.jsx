@@ -11,7 +11,7 @@ export default async function MarketplacePage() {
 	return (
 		<>
 			<div className="p-8">
-				<h1 className="mb-4 text-3xl">Marketplace</h1>
+				<h1 className="mb-4 text-3xl">Community</h1>
 				<div className="flex flex-col flex-wrap">
 					{record.map(card => (
 						<PlayCard key={card.collectionId} {...card} />
